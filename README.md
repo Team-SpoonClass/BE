@@ -27,27 +27,27 @@ gradle project
 
 ## dependencies
 #### Lombok  
-1.18.22
+1.18.22  
 간편한 개발을 도와주는 라이브러리 입니다.
 
 #### Spring Web 
-5.3.12
+5.3.12  
 Restful한 Spring 웹 개발을 도와주는 라이브러리 입니다. 
 
 #### Spring Security  
-5.5.3
+5.5.3  
 Spring 보안 정책을 설정하는 라이브러리입니다.
 
 #### Spring Data JPA
-2.5.6
+2.5.6  
 Spring과 RDBS간 데이터 송수신을 위한 라이브러리입니다.
 
 #### MySQL Driver
-8.0.27
+8.0.27  
 MySQL을 사용하기 위한 라이브러리입니다.
 
 #### Validation 
-2.5.6
+2.5.6  
 I/O의 validation 정책을 설정하는 라이브러리입니다.
 
 ## ignore
