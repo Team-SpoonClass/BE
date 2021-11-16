@@ -50,6 +50,15 @@ MySQL을 사용하기 위한 라이브러리입니다.
 2.5.6  
 I/O의 validation 정책을 설정하는 라이브러리입니다.
 
+#### RestDocs 
+2.0.5  
+test 기반의 Rest API 문서 자동화 라이브러리입니다.
+
+#### JWT
+0.11.1
+Token 기반의 인증 방식을 위한 라이브러리입니다.
+
+
 ## ignore
 application-env.yml
 
