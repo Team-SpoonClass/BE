@@ -1,12 +1,14 @@
 package com.likelion.spoonclass.domain.member;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Builder
+@Getter
 @NoArgsConstructor
 public class Member {
     @Id
@@ -22,4 +24,6 @@ public class Member {
     @Column
     private String password;
 
+    @Builder.Default
+    private Authority authority = Authority.USER;
 }
