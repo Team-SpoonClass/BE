@@ -1,30 +1,70 @@
-# templates
-For Project Templates
+<p align="center"><img src="image_src"> <img src= "https://user-images.githubusercontent.com/26921986/141883582-bfd9d217-3579-4341-b944-0dee13f94813.png"></p>
 
-# Git Message의 중요성
-잘쓰인 commit message는   
-1. 더 좋은 커밋 로그 가독성
-2. 더 나은 협업 프로세스
-3. 더 쉬운 코드 유지보수
 
-## Commit Message의 7가지 약속 (NHN)
-1. 제목과 본문을 한 줄 띄워 분리하기
-2. 제목은 영문 기준 50자 이내로
-3. 제목 첫글자를 대문자로
-4. 제목 끝에 . 금지
-5. 제목은 명령조로
-6. 본문은 영문 기준 72자마다 줄 바꾸기
-7. 본문은 어떻게보다 무엇을, 왜에 맞춰 작성하기  
+
+<b>SpoonClass</b> 는   
+<b>지역기반 재능 플랫폼</b> 입니다  
+
+MZ 세대는 개인의 행복을 추구하고, 경험하고, 공유하는 것을 큰 가치로 봅니다.  
+이에 따라 One Day로 취미를 배우거나 지식을 얻을 수 있는 재능공유 플랫폼이 존재하는데,
+
+우리는 같은 대학 내에서 튜터와 튜티를 구성하여
+
+부담없는
+
+저렴한
+
+간편한
+
+원데이 클래스 플랫폼, spoonClass를 만듭니다.
+
+
+# SpoonClass Back End
+
+
+## Spring boot 2.5.6  
+gradle project
+
+## dependencies
+#### Lombok  
+1.18.22
+간편한 개발을 도와주는 라이브러리 입니다.
+
+#### Spring Web 
+5.3.12
+Restful한 Spring 웹 개발을 도와주는 라이브러리 입니다. 
+
+#### Spring Security  
+5.5.3
+Spring 보안 정책을 설정하는 라이브러리입니다.
+
+#### Spring Data JPA
+2.5.6
+Spring과 RDBS간 데이터 송수신을 위한 라이브러리입니다.
+
+#### MySQL Driver
+8.0.27
+MySQL을 사용하기 위한 라이브러리입니다.
+
+#### Validation 
+2.5.6
+I/O의 validation 정책을 설정하는 라이브러리입니다.
+
+## ignore
+application-env.yml
+
+
+## Class Diagram
+
+<p align="center"><img src="image_src"> <img src= "https://user-images.githubusercontent.com/26921986/141883792-44fbf986-20c2-4ec6-b49c-202d9d1ace85.png"></p>
+
+
+
 
 ```
-소스코드를 보지 않고도 변경 사항이 무엇을 하는지 알 수 있도록 해야한다.  
-커밋 메시지 본문으로 "왜", "무엇을 위해", "어떻게" 변경했는지와 상세 내용 추가 설명하기  
-맥락없는 총칭적 메시지 사용 자제하기!  
-ex. 이거 고침, 잘될거임, CSS조정, 이거 수정함 등
+reference
 
-
-```
-## reference
+<git template>
 
 [NHN Cloud - 좋은 커밋 메시지를 작성하기 위한 7가지 약속]  
 https://meetup.toast.com/posts/106  
