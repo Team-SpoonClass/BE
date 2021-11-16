@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id "org.asciidoctor.convert" version "2.4.0"
+	id 'jacoco'
 }
 
 group = 'com.likelion'
@@ -19,6 +20,48 @@ repositories {
 	mavenCentral()
 }
 
+// jacoco version
+// jacoco plugin 순서 : test -> jacocoTestReport -> jacocoTestCoverageVerification
+jacoco{
+	toolVersion= '0.8.7'
+}
+
+// jacocoTestReports Task setting
+// 테스트 결과를 리포트 파일로 저장하는 jacocoTestReports Task의 설정
+jacocoTestReport{
+	reports{
+		html.enabled true
+		html.destination file('${buildDir}/jacocoHTML.html')
+		csv.enabled false
+		xml.enabled false
+	}
+
+	finalizedBy 'jacocoTestCoverageVerification'
+}
+
+// jacocoTestCoverageVerification Task Setting
+// 원하는 코드 커버리지를 설정하고 커버리지 만족여부를 확인하는 설정
+// 최소 커버리지 수준을 설정하고, 통과하지 못할 경우 Task가 실패한다
+jacocoTestCoverageVerification{
+	violationRules{
+		rule{
+			enabled= true
+			element= 'CLASS'
+
+			// 라인 커버리지 제한을 80% 로 설정
+			limit{
+				counter= 'LINE'
+				value= 'COVEREDRATIO'
+				minimum= 0.80
+			}
+
+			// 제외할 클래스 지정
+			excludes= []
+		}
+	}
+}
+
+
 /**
  * build dir 하단에 dir와 파일을 빌드하기 전에 미리 구성해둔다.
  */
@@ -31,6 +74,7 @@ ext{
 test{
 	outputs.dir snippetsDir
 	useJUnitPlatform()
+	finalizedBy 'jacocoTestReport'
 }
 
 /**
