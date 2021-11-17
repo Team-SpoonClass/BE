@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class RequestSignUpMemberDto {
+public class RequestAuthSignUpDto {
     private String email;
     private String password;
     private String name;

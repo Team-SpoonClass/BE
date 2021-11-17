@@ -1,7 +1,7 @@
 package com.likelion.spoonclass.domain.member.auth;
 
-import com.likelion.spoonclass.domain.member.dto.request.RequestSignInMemberDto;
-import com.likelion.spoonclass.domain.member.dto.request.RequestSignUpMemberDto;
+import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignInDto;
+import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignUpDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,13 +17,13 @@ public class AuthController implements AuthAPI {
 
     @PostMapping("/signIn")
     @Override
-    public ResponseEntity<?> signIn(@RequestBody RequestSignInMemberDto requestDto) {
+    public ResponseEntity<?> signIn(@RequestBody RequestAuthSignInDto requestDto) {
         return authService.login(requestDto);
     }
 
     @PostMapping("/signUp")
     @Override
-    public ResponseEntity<?> signUp(@RequestBody RequestSignUpMemberDto requestDto) {
+    public ResponseEntity<?> signUp(@RequestBody RequestAuthSignUpDto requestDto) {
         return authService.join(requestDto);
     }
 }

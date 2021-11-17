@@ -2,8 +2,8 @@ package com.likelion.spoonclass.domain.member.auth;
 
 import com.likelion.spoonclass.config.auth.jwt.JwtProvider;
 import com.likelion.spoonclass.domain.member.Member;
-import com.likelion.spoonclass.domain.member.dto.request.RequestSignInMemberDto;
-import com.likelion.spoonclass.domain.member.dto.request.RequestSignUpMemberDto;
+import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignInDto;
+import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignUpDto;
 import com.likelion.spoonclass.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     @Transactional
-    public ResponseEntity<?> login(RequestSignInMemberDto requestDto) {
+    public ResponseEntity<?> login(RequestAuthSignInDto requestDto) {
         Member member = memberRepository.findByEmail(requestDto.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("일치하는 Email이 없습니다."));
 
@@ -37,14 +37,14 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     @Transactional
-    public ResponseEntity<?> join(RequestSignUpMemberDto requestDto) {
+    public ResponseEntity<?> join(RequestAuthSignUpDto requestDto) {
         // 중복되는 email이 있는지 확인
         if(isDuplicated(requestDto.getEmail()))
             throw new IllegalArgumentException("중복되는 이메일입니다.");
 
         // 비밀번호 암호화
         requestDto.setPassword(passwordEncoder.encode(requestDto.getPassword()));
-        
+
         memberRepository.save(requestDto.of());
         return ResponseEntity.ok().build();
     }
