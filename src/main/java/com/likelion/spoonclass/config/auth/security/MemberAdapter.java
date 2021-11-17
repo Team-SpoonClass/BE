@@ -15,11 +15,11 @@ public class MemberAdapter extends User {
     private Member member;
 
     public MemberAdapter(Member member){
-        super(member.getEmail(),member.getPassword(),getAutority(member.getAuthority()));
+        super(member.getEmail(),member.getPassword(), getAuthority(member.getAuthority()));
         this.member = member;
     }
 
-    private static Collection<? extends GrantedAuthority> getAutority(Authority authority){
+    private static Collection<? extends GrantedAuthority> getAuthority(Authority authority){
         Collection<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(authority.getRole()));
         return authorities;
