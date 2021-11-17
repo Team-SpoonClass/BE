@@ -11,13 +11,12 @@ public class RequestSignUpMemberDto {
     private String password;
     private String name;
 
-    public Member member(){
+    public Member of(){
         Member member = Member.builder()
                 .email(this.email)
                 .name(this.name)
                 .password(this.password)
                 .build();
-
         return member;
     }
 }
