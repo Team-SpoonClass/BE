@@ -2,10 +2,7 @@ package com.likelion.spoonclass.config.auth.jwt;
 
 import com.likelion.spoonclass.config.auth.security.MemberAdapter;
 import com.likelion.spoonclass.domain.member.Authority;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -112,5 +109,25 @@ public class JwtProvider {
      */
     public String resolve(HttpServletRequest request){
         return request.getHeader("X-AUTH_TOKEN");
+    }
+
+    public String setInvalidJwtMessage(String jwtToken){
+        try{
+            Jwts.parser().setSigningKey(key).parseClaimsJws(jwtToken);
+            return "Server 내부 로직에서 발생한 오류입니다. 백엔드에 문의하세요.";
+        }
+        catch (UnsupportedJwtException | MalformedJwtException e){
+            return "지원되지 않는 JWT 구성입니다.";
+        }
+        catch (ExpiredJwtException e){
+            return "유효시간이 경과된 JWT 입니다.";
+        }
+        catch (SignatureException e){
+            return "유효하지 않은 서명입니다.";
+        }
+        catch (IllegalArgumentException e){
+            return "JWT는 공백으로 주어질수 없습니다.";
+        }
+
     }
 }
