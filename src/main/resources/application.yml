@@ -1,0 +1,16 @@
+server:
+  error:
+    include-message: always
+
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size:4
+  jpa:
+    hibernate:
+      ddl-auto: create
+      genetrate-ddl: true
+      show-sql: true
+
+  profiles:
+    active: dev,env
