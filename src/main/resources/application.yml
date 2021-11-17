@@ -13,4 +13,4 @@ spring:
       show-sql: true
 
   profiles:
-    active: dev,env
+    active: dev, env

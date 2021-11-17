@@ -3,7 +3,6 @@ package com.likelion.spoonclass.config.auth.jwt;
 import com.likelion.spoonclass.config.auth.security.MemberAdapter;
 import com.likelion.spoonclass.domain.member.Authority;
 import io.jsonwebtoken.*;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,16 +18,19 @@ import java.util.Date;
  *  JWT Token의 생성과 유효성 검증을 담당하는 Provider
  */
 @Component
-@RequiredArgsConstructor
 public class JwtProvider {
 
-    @Value("{jwt.validTime}")
-    private Long validTime;
-    @Value("{jwt.secret}")
+    private final UserDetailsService securityService;
+    private final Long validTimeMilli;
     private String key;
 
-    private final UserDetailsService securityService;
-    private final Long validTimeMilli = validTime * 1000L;
+    public JwtProvider(@Value("${jwt.validTime}") Long validTime,
+                       @Value("${jwt.secret}") String key,
+                       UserDetailsService securityService){
+        this.securityService = securityService;
+        this.validTimeMilli = validTime * 1000L;
+        this.key = key;
+    }
 
     // Bean 객체 생성시 초기화, key를 Base64로 인코딩한다.
     @PostConstruct
