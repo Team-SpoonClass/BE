@@ -42,6 +42,9 @@ public class AuthServiceImpl implements AuthService{
         if(isDuplicated(requestDto.getEmail()))
             throw new IllegalArgumentException("중복되는 이메일입니다.");
 
+        // 비밀번호 암호화
+        requestDto.setPassword(passwordEncoder.encode(requestDto.getPassword()));
+        
         memberRepository.save(requestDto.of());
         return ResponseEntity.ok().build();
     }
