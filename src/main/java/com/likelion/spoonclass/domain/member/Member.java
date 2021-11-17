@@ -27,5 +27,6 @@ public class Member {
     private String password;
 
     @Builder.Default
+    @Enumerated(EnumType.STRING)
     private Authority authority = Authority.USER;
 }
