@@ -1,14 +1,14 @@
 package com.likelion.spoonclass.domain.member.controller;
 
-import com.likelion.spoonclass.domain.member.dto.request.RequestSignInMemberDto;
-import com.likelion.spoonclass.domain.member.dto.request.RequestSignUpMemberDto;
+import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignInDto;
+import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignUpDto;
 import org.springframework.http.ResponseEntity;
 
 public interface MemberAPI {
 
-    ResponseEntity<?> signUp(RequestSignUpMemberDto requestSignUpMemberDto);
+    ResponseEntity<?> signUp(RequestAuthSignUpDto requestAuthSignUpDto);
 
-    ResponseEntity<?> signIn(RequestSignInMemberDto requestSignInMemberDto);
+    ResponseEntity<?> signIn(RequestAuthSignInDto requestAuthSignInDto);
 
 
 }

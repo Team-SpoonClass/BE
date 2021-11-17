@@ -6,18 +6,17 @@ import lombok.Data;
 
 @Data
 @Builder
-public class RequestSignUpMemberDto {
+public class RequestAuthSignUpDto {
     private String email;
     private String password;
     private String name;
 
-    public Member member(){
+    public Member of(){
         Member member = Member.builder()
                 .email(this.email)
                 .name(this.name)
                 .password(this.password)
                 .build();
-
         return member;
     }
 }
