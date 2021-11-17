@@ -17,13 +17,13 @@ public class AuthController implements AuthAPI {
 
     @PostMapping("/signIn")
     @Override
-    public ResponseEntity<?> signIn(@RequestBody RequestAuthSignInDto requestDto) {
-        return authService.login(requestDto);
+    public ResponseEntity signIn(@RequestBody RequestAuthSignInDto requestDto) {
+        return ResponseEntity.ok().body(authService.login(requestDto));
     }
 
     @PostMapping("/signUp")
     @Override
-    public ResponseEntity<?> signUp(@RequestBody RequestAuthSignUpDto requestDto) {
-        return authService.join(requestDto);
+    public ResponseEntity signUp(@RequestBody RequestAuthSignUpDto requestDto) {
+        return ResponseEntity.ok().body(authService.join(requestDto));
     }
 }

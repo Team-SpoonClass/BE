@@ -24,7 +24,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     @Transactional
-    public ResponseEntity<?> login(RequestAuthSignInDto requestDto) {
+    public Long login(RequestAuthSignInDto requestDto) {
         Member member = memberRepository.findByEmail(requestDto.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("일치하는 Email이 없습니다."));
 
@@ -32,12 +32,12 @@ public class AuthServiceImpl implements AuthService{
         if(!passwordEncoder.matches(requestDto.getPassword(), member.getPassword()))
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
 
-        return ResponseEntity.ok().body(jwtProvider.create(member.getEmail(), member.getAuthority()));
+        return member.getId();
     }
 
     @Override
     @Transactional
-    public ResponseEntity<?> join(RequestAuthSignUpDto requestDto) {
+    public Long join(RequestAuthSignUpDto requestDto) {
         // 중복되는 email이 있는지 확인
         if(isDuplicated(requestDto.getEmail()))
             throw new IllegalArgumentException("중복되는 이메일입니다.");
@@ -45,8 +45,10 @@ public class AuthServiceImpl implements AuthService{
         // 비밀번호 암호화
         requestDto.setPassword(passwordEncoder.encode(requestDto.getPassword()));
 
-        memberRepository.save(requestDto.of());
-        return ResponseEntity.ok().build();
+        Member member = requestDto.of();
+        memberRepository.save(member);
+
+        return member.getId();
     }
 
     private boolean isDuplicated(String email){
