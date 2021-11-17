@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @AutoConfigureRestDocs(uriScheme = "https",
         uriHost = "docs.api.com",
         outputDir = "build/generated-snippets")
-public class BaseTest {
+public abstract class BaseTest {
     @Autowired
     protected MockMvc mockMvc;
 }
