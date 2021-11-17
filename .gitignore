@@ -40,3 +40,6 @@ out/
 **/*-env.yml
 **/*-dev.yml
 **/*-rls.yml
+
+### docs ###
+${buildDir}/**
