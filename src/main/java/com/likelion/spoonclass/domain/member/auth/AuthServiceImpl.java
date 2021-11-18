@@ -2,6 +2,7 @@ package com.likelion.spoonclass.domain.member.auth;
 
 import com.likelion.spoonclass.config.auth.jwt.JwtProvider;
 import com.likelion.spoonclass.domain.member.Member;
+import com.likelion.spoonclass.domain.member.auth.token.TokenSet;
 import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignInDto;
 import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignUpDto;
 import com.likelion.spoonclass.domain.member.repository.MemberRepository;
@@ -24,7 +25,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     @Transactional
-    public Long login(RequestAuthSignInDto requestDto) {
+    public TokenSet login(RequestAuthSignInDto requestDto) {
         Member member = memberRepository.findByEmail(requestDto.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException("일치하는 Email이 없습니다."));
 
@@ -32,7 +33,7 @@ public class AuthServiceImpl implements AuthService{
         if(!passwordEncoder.matches(requestDto.getPassword(), member.getPassword()))
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
 
-        return member.getId();
+        return TokenSet.of(jwtProvider.create(member.getEmail(), member.getAuthority()),null);
     }
 
     @Override

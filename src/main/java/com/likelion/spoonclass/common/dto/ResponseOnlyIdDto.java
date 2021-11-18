@@ -16,10 +16,9 @@ public class ResponseOnlyIdDto extends BaseDto {
         this.message = message;
     }
 
-    public static ResponseOnlyIdDto of(Long id,String message){
+    public static ResponseOnlyIdDto of(Long id){
         return ResponseOnlyIdDto.builder()
                 .id(id)
-                .message(message)
                 .build();
     }
 }
