@@ -43,3 +43,5 @@ out/
 
 ### docs ###
 ${buildDir}/**
+src/docs/asciidoc/**
+src/main/resources/static/**
