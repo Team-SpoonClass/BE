@@ -1,14 +1,22 @@
 package com.likelion.spoonclass.common.dto;
 
+import lombok.Builder;
+import lombok.Data;
+
+@Data
 public class ResponseOnlyIdDto extends BaseDto {
     private Long id;
 
-    private ResponseOnlyIdDto(Long id,String message){
-        super(message);
+    @Builder
+    public ResponseOnlyIdDto(Long id, String message){
         this.id = id;
+        this.message = message;
     }
 
     public static ResponseOnlyIdDto of(Long id,String message){
-        return new ResponseOnlyIdDto(id,message);
+        return ResponseOnlyIdDto.builder()
+                .id(id)
+                .message(message)
+                .build();
     }
 }
