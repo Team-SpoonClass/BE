@@ -32,7 +32,7 @@ class SignUpTest extends BaseTest {
 
     @Test
     @Transactional
-    @DisplayName("회원가입 테스트 (성공 시)")
+    @DisplayName(value = "회원가입 테스트 (성공 시)")
     void 회원가입() throws Exception {
         RequestAuthSignUpDto requestDto = DtoFactory.getMockSignUpDto();
 
