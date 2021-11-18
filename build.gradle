@@ -28,6 +28,8 @@ jacoco{
 
 // jacocoTestReports Task setting
 // 테스트 결과를 리포트 파일로 저장하는 jacocoTestReports Task의 설정
+
+/*
 jacocoTestReport{
 	reports{
 		html.enabled true
@@ -38,11 +40,13 @@ jacocoTestReport{
 
 	finalizedBy 'jacocoTestCoverageVerification'
 }
+*/
 
 // jacocoTestCoverageVerification Task Setting
 // 원하는 코드 커버리지를 설정하고 커버리지 만족여부를 확인하는 설정
 // 최소 커버리지 수준을 설정하고, 통과하지 못할 경우 Task가 실패한다
-jacocoTestCoverageVerification{
+
+/*jacocoTestCoverageVerification{
 	violationRules{
 		rule{
 			enabled= true
@@ -59,7 +63,7 @@ jacocoTestCoverageVerification{
 			excludes= []
 		}
 	}
-}
+}*/
 
 
 /**
@@ -74,7 +78,7 @@ ext{
 test{
 	outputs.dir snippetsDir
 	useJUnitPlatform()
-	finalizedBy 'jacocoTestReport'
+	// finalizedBy 'jacocoTestReport'
 }
 
 /**

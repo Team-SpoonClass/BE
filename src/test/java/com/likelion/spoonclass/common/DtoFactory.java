@@ -10,5 +10,12 @@ public class DtoFactory {
                 .name(name)
                 .build();
     }
+    public static RequestAuthSignUpDto getMockSignUpDto(){
+        return RequestAuthSignUpDto.builder()
+                .email("mock@email.com")
+                .password("1111")
+                .name("mock")
+                .build();
+    }
 
 }
