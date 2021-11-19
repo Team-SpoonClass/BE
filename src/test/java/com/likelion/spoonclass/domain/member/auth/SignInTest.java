@@ -50,7 +50,8 @@ class SignInTest extends BaseTest {
                         ),
                         responseFields(
                                 fieldWithPath("message").type(JsonFieldType.STRING).description("메시지"),
-                                fieldWithPath("id").type(JsonFieldType.NUMBER).description("id")
+                                fieldWithPath("oriToken").type(JsonFieldType.STRING).description("기존 토큰"),
+                                fieldWithPath("refreshToken").type(JsonFieldType.STRING).description("재발급 토큰")
                         )
                 ));
     }

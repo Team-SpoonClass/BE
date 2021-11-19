@@ -73,7 +73,6 @@ ext {
 asciidoctor {
 	inputs.dir snippetsDir
 	dependsOn test
-
 }
 asciidoctor.doFirst {
 	delete file('src/main/resources/static/docs')
@@ -82,18 +81,17 @@ bootJar {
 	dependsOn asciidoctor
 	copy{
 		from "${asciidoctor.outputDir}"
-		into 'src/docs/asciidoc'
-		from file("build/docs/asciidoc")
-		into file("src/main/resources/static/docs")
+		into "BOOT-INF/classes/static/docs"
 	}
 }
-
-/**
- * gradle build 시, test -> asciidoctor -> copyRestDocs -> bootJar 순으로 진행
- */
+task copyDocument(type: Copy) {
+	dependsOn asciidoctor
+	from file("BOOT-INF/classes/static/docs")
+	into file("src/main/resources/static")
+}
 test {
-	useJUnitPlatform()
 	outputs.dir snippetsDir
+	useJUnitPlatform()
 	// finalizedBy 'jacocoTestReport'
 }
 dependencies {
@@ -118,9 +116,13 @@ dependencies {
 
 
 	// for RestDocs
+	// asciidoctor 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 	testImplementation group: 'org.springframework.restdocs', name: 'spring-restdocs-mockmvc', version: '2.0.5.RELEASE'
 }
 
+build {
+	dependsOn copyDocument
+}
 
 sourceSets {
 	main {
