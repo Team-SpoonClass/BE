@@ -32,7 +32,7 @@ class SignInTest extends BaseTest {
     @DisplayName(value = "로그인 (성공 시)")
     void 로그인() throws Exception {
 
-        given(authService.login(any(RequestAuthSignInDto.class))).willReturn(1L);
+        given(authService.login(any(RequestAuthSignInDto.class))).willReturn(DtoFactory.getMockToken());
 
         mockMvc.perform(post("/auth/signIn")
                 .contentType(MediaType.APPLICATION_JSON)

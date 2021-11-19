@@ -16,7 +16,6 @@ public class ResponseAuthSignInDto extends BaseDto {
         super();
         this.oriToken = oriToken;
         this.refreshToken = refreshToken;
-        this.message = message;
     }
 
     public static ResponseAuthSignInDto of(String oriToken, String refreshToken){

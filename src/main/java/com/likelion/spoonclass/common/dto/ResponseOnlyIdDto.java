@@ -10,10 +10,9 @@ public class ResponseOnlyIdDto extends BaseDto {
     private Long id;
 
     @Builder
-    public ResponseOnlyIdDto(Long id, String message){
+    public ResponseOnlyIdDto(Long id){
         super();
         this.id = id;
-        this.message = message;
     }
 
     public static ResponseOnlyIdDto of(Long id){

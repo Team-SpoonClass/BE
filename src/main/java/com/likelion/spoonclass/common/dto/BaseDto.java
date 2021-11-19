@@ -4,5 +4,5 @@ import lombok.*;
 
 @Data
 public class BaseDto {
-    protected String message = "success";
+    protected final String message = "success";
 }
