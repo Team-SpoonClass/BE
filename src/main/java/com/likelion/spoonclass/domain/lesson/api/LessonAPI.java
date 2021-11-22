@@ -6,5 +6,8 @@ import org.springframework.http.ResponseEntity;
 
 public interface LessonAPI {
     ResponseEntity create(MemberAdapter memberAdapter, RequestLessonDto requestDto);
+
     ResponseEntity modify(MemberAdapter memberAdapter, Long id, RequestLessonDto requestDto);
+
+    ResponseEntity remove(MemberAdapter memberAdapter, Long id);
 }

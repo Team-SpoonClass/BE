@@ -1,5 +1,6 @@
 package com.likelion.spoonclass.domain.lesson.api;
 
+import com.likelion.spoonclass.common.dto.BaseDto;
 import com.likelion.spoonclass.config.auth.security.MemberAdapter;
 import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
@@ -36,5 +37,13 @@ public class LessonController implements LessonAPI {
                 .build();
 
         return ResponseEntity.ok(responseDto);
+    }
+
+    @Override
+    @DeleteMapping("/remove")
+    public ResponseEntity remove(@AuthenticationPrincipal MemberAdapter memberAdapter,
+                                 @RequestParam(value = "id") Long id) {
+        lessonService.remove(memberAdapter.getMember(),id);
+        return ResponseEntity.ok(new BaseDto());
     }
 }
