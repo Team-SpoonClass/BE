@@ -75,13 +75,13 @@ asciidoctor {
 	inputs.dir snippetsDir
 }
 asciidoctor.doFirst {
-	delete file('src/main/resources/static/docs')
+	delete file('src/main/resources/static')
 }
 bootJar {
 	dependsOn asciidoctor
 	copy{
 		from "${asciidoctor.outputDir}"
-		into "BOOT-INF/classes/static/docs"
+		into "BOOT-INF/classes/static"
 	}
 }
 task copyDocument(type: Copy) {
