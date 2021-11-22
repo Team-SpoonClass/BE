@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtProvider jwtProvider;
     private final AuthenticationEntryPoint jwtEntryPoint;
     private final String[] AUTHENTICATED_URI_LIST = {
-            "/member/**"
+            "/member/**","/lesson/**"
     };
 
     @Bean
