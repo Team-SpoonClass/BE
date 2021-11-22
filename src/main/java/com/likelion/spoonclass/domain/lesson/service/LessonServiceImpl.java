@@ -28,6 +28,7 @@ public class LessonServiceImpl implements LessonService {
     public Lesson modify(Member member,Long id, RequestCreateLessonDto requestDto) {
         Lesson lesson = lessonRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("없는 클래스입니다."));
+        lesson.validate(member);
         lesson.modify(requestDto);
 
         return lesson;

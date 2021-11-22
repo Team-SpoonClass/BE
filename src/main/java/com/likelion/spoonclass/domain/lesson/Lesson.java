@@ -1,6 +1,7 @@
 package com.likelion.spoonclass.domain.lesson;
 
 import com.likelion.spoonclass.domain.BaseEntity;
+import com.likelion.spoonclass.domain.ValidateAuthority;
 import com.likelion.spoonclass.domain.attend.Attend;
 import com.likelion.spoonclass.domain.lesson.dto.RequestCreateLessonDto;
 import com.likelion.spoonclass.domain.member.Member;
@@ -17,7 +18,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Lesson extends BaseEntity {
+public class Lesson extends BaseEntity implements ValidateAuthority {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -56,5 +57,10 @@ public class Lesson extends BaseEntity {
         this.description = requestDto.getDescription();
         this.openKakao = requestDto.getOpenKakao();
         this.oneLineInfo = requestDto.getOneLineInfo();
+    }
+
+    @Override
+    public Member getMember() {
+        return captain;
     }
 }
