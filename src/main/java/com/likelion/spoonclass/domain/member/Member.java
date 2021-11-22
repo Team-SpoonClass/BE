@@ -11,9 +11,7 @@ import java.util.List;
 
 @Entity
 @Getter
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +26,6 @@ public class Member extends BaseEntity {
     @Column
     private String password;
 
-    @Builder.Default
     @Enumerated(EnumType.STRING)
     private Authority authority = Authority.USER;
 
@@ -38,4 +35,11 @@ public class Member extends BaseEntity {
     @Setter
     @OneToOne(fetch = FetchType.LAZY)
     private Univ univ;
+
+    @Builder
+    public Member(String email, String password, String name){
+        this.name = name;
+        this.email = email;
+        this.name = name;
+    }
 }

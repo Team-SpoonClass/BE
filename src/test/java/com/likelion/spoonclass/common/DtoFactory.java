@@ -10,6 +10,7 @@ public class DtoFactory {
                 .email("mock@email.com")
                 .password("1111")
                 .name("mock")
+                .univ("숭실대학교")
                 .build();
     }
 

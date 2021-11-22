@@ -51,7 +51,8 @@ class SignUpTest extends BaseTest {
                         requestFields(
                                 fieldWithPath("email").type(JsonFieldType.STRING).description("이메일"),
                                 fieldWithPath("password").type(JsonFieldType.STRING).description("비밀번호"),
-                                fieldWithPath("name").type(JsonFieldType.STRING).description("이름")
+                                fieldWithPath("name").type(JsonFieldType.STRING).description("이름"),
+                                fieldWithPath("univ").type(JsonFieldType.STRING).description("대학교")
                         ),
                         responseFields(
                                 fieldWithPath("message").type(JsonFieldType.STRING).description("메시지"),
