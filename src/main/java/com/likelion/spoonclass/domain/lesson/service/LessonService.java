@@ -6,5 +6,5 @@ import com.likelion.spoonclass.domain.member.Member;
 public interface LessonService {
     Long create(Member member, RequestLessonDto requestDto);
     Long modify(Member member,Long id, RequestLessonDto requestDto);
-    void remove(Member member, Long id);
+    Long remove(Member member, Long id);
 }

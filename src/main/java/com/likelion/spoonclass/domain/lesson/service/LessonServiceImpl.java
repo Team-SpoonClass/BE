@@ -36,11 +36,12 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     @Transactional
-    public void remove(Member member, Long id) {
+    public Long remove(Member member, Long id) {
         Lesson lesson = lessonRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("없는 클래스입니다."));
         lesson.validate(member);
-
         lessonRepository.delete(lesson);
+
+        return lesson.getId();
     }
 }
