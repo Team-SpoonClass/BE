@@ -3,7 +3,7 @@ package com.likelion.spoonclass.domain.lesson;
 import com.likelion.spoonclass.domain.BaseEntity;
 import com.likelion.spoonclass.domain.ValidateAuthority;
 import com.likelion.spoonclass.domain.attend.Attend;
-import com.likelion.spoonclass.domain.lesson.dto.RequestCreateLessonDto;
+import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.member.Member;
 import com.likelion.spoonclass.domain.photo.LessonPhoto;
 import lombok.Builder;
@@ -52,7 +52,7 @@ public class Lesson extends BaseEntity implements ValidateAuthority {
         this.club = club;
     }
 
-    public void modify(RequestCreateLessonDto requestDto){
+    public void modify(RequestLessonDto requestDto){
         this.name = requestDto.getName();
         this.description = requestDto.getDescription();
         this.openKakao = requestDto.getOpenKakao();

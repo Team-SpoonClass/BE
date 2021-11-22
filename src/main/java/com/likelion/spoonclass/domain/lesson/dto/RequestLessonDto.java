@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class RequestCreateLessonDto {
+public class RequestLessonDto {
     private String name;
     private String oneLineInfo;
     private String club;

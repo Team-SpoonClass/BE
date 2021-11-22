@@ -1,11 +1,9 @@
 package com.likelion.spoonclass.domain.lesson.api;
 
 import com.likelion.spoonclass.config.auth.security.MemberAdapter;
-import com.likelion.spoonclass.domain.lesson.Lesson;
-import com.likelion.spoonclass.domain.lesson.dto.RequestCreateLessonDto;
+import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
 import com.likelion.spoonclass.domain.lesson.service.LessonService;
-import com.likelion.spoonclass.domain.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,9 +18,10 @@ public class LessonController implements LessonAPI {
     @Override
     @PostMapping("/create")
     public ResponseEntity create(@AuthenticationPrincipal MemberAdapter memberAdapter,
-                                 @RequestBody RequestCreateLessonDto requestDto) {
-        Lesson lesson = lessonService.create(memberAdapter.getMember(), requestDto);
-        ResponseLessonDto responseDto = ResponseLessonDto.builder().id(lesson.getId()).build();
+                                 @RequestBody RequestLessonDto requestDto) {
+        ResponseLessonDto responseDto = ResponseLessonDto.builder()
+                .id(lessonService.create(memberAdapter.getMember(), requestDto))
+                .build();
 
         return ResponseEntity.ok(responseDto);
     }
@@ -31,9 +30,10 @@ public class LessonController implements LessonAPI {
     @PostMapping("/modify")
     public ResponseEntity modify(@AuthenticationPrincipal MemberAdapter memberAdapter,
                                  @RequestParam(value = "id") Long id,
-                                 @RequestBody RequestCreateLessonDto requestDto) {
-        Lesson lesson = lessonService.modify(memberAdapter.getMember(), id, requestDto);
-        ResponseLessonDto responseDto = ResponseLessonDto.builder().id(lesson.getId()).build();
+                                 @RequestBody RequestLessonDto requestDto) {
+        ResponseLessonDto responseDto = ResponseLessonDto.builder()
+                .id(lessonService.modify(memberAdapter.getMember(), id, requestDto))
+                .build();
 
         return ResponseEntity.ok(responseDto);
     }

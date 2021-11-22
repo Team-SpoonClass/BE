@@ -1,12 +1,10 @@
 package com.likelion.spoonclass.domain.lesson.api;
 
 import com.likelion.spoonclass.config.auth.security.MemberAdapter;
-import com.likelion.spoonclass.domain.lesson.Lesson;
-import com.likelion.spoonclass.domain.lesson.dto.RequestCreateLessonDto;
-import com.likelion.spoonclass.domain.member.Member;
+import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import org.springframework.http.ResponseEntity;
 
 public interface LessonAPI {
-    ResponseEntity create(MemberAdapter memberAdapter, RequestCreateLessonDto requestDto);
-    ResponseEntity modify(MemberAdapter memberAdapter, Long id, RequestCreateLessonDto requestDto);
+    ResponseEntity create(MemberAdapter memberAdapter, RequestLessonDto requestDto);
+    ResponseEntity modify(MemberAdapter memberAdapter, Long id, RequestLessonDto requestDto);
 }

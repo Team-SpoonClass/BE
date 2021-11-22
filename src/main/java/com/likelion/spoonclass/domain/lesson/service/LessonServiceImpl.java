@@ -2,7 +2,7 @@ package com.likelion.spoonclass.domain.lesson.service;
 
 import com.likelion.spoonclass.domain.lesson.Lesson;
 import com.likelion.spoonclass.domain.lesson.LessonRepository;
-import com.likelion.spoonclass.domain.lesson.dto.RequestCreateLessonDto;
+import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,22 +15,22 @@ public class LessonServiceImpl implements LessonService {
 
     @Override
     @Transactional
-    public Lesson create(Member member, RequestCreateLessonDto requestDto) {
+    public Long create(Member member, RequestLessonDto requestDto) {
         Lesson lesson = requestDto.of();
         lesson.setCaptain(member);
         lessonRepository.save(lesson);
 
-        return lesson;
+        return lesson.getId();
     }
 
     @Override
     @Transactional
-    public Lesson modify(Member member,Long id, RequestCreateLessonDto requestDto) {
+    public Long modify(Member member,Long id, RequestLessonDto requestDto) {
         Lesson lesson = lessonRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("없는 클래스입니다."));
         lesson.validate(member);
         lesson.modify(requestDto);
 
-        return lesson;
+        return lesson.getId();
     }
 }
