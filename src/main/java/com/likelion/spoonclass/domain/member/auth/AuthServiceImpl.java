@@ -6,8 +6,9 @@ import com.likelion.spoonclass.domain.member.auth.token.TokenSet;
 import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignInDto;
 import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignUpDto;
 import com.likelion.spoonclass.domain.member.repository.MemberRepository;
+import com.likelion.spoonclass.domain.univ.Univ;
+import com.likelion.spoonclass.domain.univ.UnivRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,6 +23,7 @@ public class AuthServiceImpl implements AuthService{
     private final JwtProvider jwtProvider;
     private final PasswordEncoder passwordEncoder;
     private final MemberRepository memberRepository;
+    private final UnivRepository univRepository;
 
     @Override
     @Transactional
@@ -46,7 +48,11 @@ public class AuthServiceImpl implements AuthService{
         // 비밀번호 암호화
         requestDto.setPassword(passwordEncoder.encode(requestDto.getPassword()));
 
+        Univ univ = univRepository.findByName(requestDto.getUniv())
+                .orElseThrow(() -> new IllegalArgumentException("없는 대학입니다."));
+
         Member member = requestDto.of();
+        member.setUniv(univ);
         memberRepository.save(member);
 
         return member.getId();

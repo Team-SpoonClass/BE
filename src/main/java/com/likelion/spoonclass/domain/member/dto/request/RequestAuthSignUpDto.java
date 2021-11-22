@@ -10,6 +10,7 @@ public class RequestAuthSignUpDto {
     private String email;
     private String password;
     private String name;
+    private String univ;
 
     public Member of(){
         Member member = Member.builder()

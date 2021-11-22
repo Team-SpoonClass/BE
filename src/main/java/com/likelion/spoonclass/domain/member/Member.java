@@ -3,10 +3,7 @@ package com.likelion.spoonclass.domain.member;
 import com.likelion.spoonclass.domain.BaseEntity;
 import com.likelion.spoonclass.domain.attend.Attend;
 import com.likelion.spoonclass.domain.univ.Univ;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -38,6 +35,7 @@ public class Member extends BaseEntity {
     @OneToMany
     private List<Attend> attendList = new ArrayList<>();
 
+    @Setter
     @OneToOne(fetch = FetchType.LAZY)
     private Univ univ;
 }
