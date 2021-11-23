@@ -33,7 +33,7 @@ public class LessonController implements LessonAPI {
     }
 
     @Override
-    @PostMapping("/modify")
+    @PatchMapping("/modify")
     public ResponseEntity modify(@AuthenticationPrincipal MemberAdapter memberAdapter,
                                  @RequestParam(value = "id") Long id,
                                  @RequestBody RequestLessonDto requestDto) {

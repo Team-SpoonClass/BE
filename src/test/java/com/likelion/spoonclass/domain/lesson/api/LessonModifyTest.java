@@ -18,6 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,7 +35,7 @@ class LessonModifyTest extends BaseTest {
         given(lessonService.modify(any(Member.class),any(Long.class),any(RequestLessonDto.class)))
                 .willReturn(1L);
 
-        mockMvc.perform(post("/lesson/modify")
+        mockMvc.perform(patch("/lesson/modify")
                 .param("id","1")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(DtoFactory.getMockLessonDto())))
