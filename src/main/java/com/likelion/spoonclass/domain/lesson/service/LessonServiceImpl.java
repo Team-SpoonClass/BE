@@ -2,15 +2,16 @@ package com.likelion.spoonclass.domain.lesson.service;
 
 import com.likelion.spoonclass.domain.lesson.Lesson;
 import com.likelion.spoonclass.domain.lesson.LessonRepository;
+import com.likelion.spoonclass.domain.lesson.dto.LessonDetailDto;
 import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
 import com.likelion.spoonclass.domain.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,7 +53,7 @@ public class LessonServiceImpl implements LessonService {
     }
 
     @Override
-    public List<ResponseLessonDto> getList(Pageable pageable) {
+    public List<LessonDetailDto> getList(Pageable pageable) {
         Page<Lesson> lessonPages = lessonRepository.findAll(pageable);
         return lessonPages.getContent()
                 .stream()

@@ -6,6 +6,7 @@ import com.likelion.spoonclass.domain.lesson.Lesson;
 import com.likelion.spoonclass.domain.member.Member;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -13,6 +14,7 @@ import javax.persistence.*;
 public class Attend extends BaseEntity implements ValidateAuthority {
     @Id
     @Getter
+    @Setter
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

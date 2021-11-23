@@ -1,24 +1,21 @@
 package com.likelion.spoonclass.domain.lesson.dto;
 
 import com.likelion.spoonclass.common.dto.BaseDto;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
 public class ResponseLessonDto extends BaseDto {
-    private String name;
-    private String club;
-    private String oneLineInfo;
-    private String representPath;
+    List<LessonDetailDto> lessonDetailDto;
 
     @Builder
-    public ResponseLessonDto(String name, String club, String oneLineInfo, String representPath){
+    public ResponseLessonDto(List list){
         super();
-        this.name = name;
-        this.club = club;
-        this.oneLineInfo = oneLineInfo;
-        this.representPath = representPath;
+        lessonDetailDto = list;
     }
 }

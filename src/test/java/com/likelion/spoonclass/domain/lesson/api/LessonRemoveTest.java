@@ -27,8 +27,8 @@ class LessonRemoveTest extends BaseTest {
     private LessonService lessonService;
 
     @Test
-    @Transactional
     @MockMember
+    @Transactional
     @DisplayName(value = "클래스 삭제 성공")
     void remove() throws Exception{
         given(lessonService.remove(any(Member.class),any(Long.class))).willReturn(1L);

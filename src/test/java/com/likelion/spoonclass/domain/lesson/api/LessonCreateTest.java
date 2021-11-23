@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.likelion.spoonclass.config.ApiDocumentUtils.getDocumentRequest;
 import static com.likelion.spoonclass.config.ApiDocumentUtils.getDocumentResponse;
@@ -28,6 +29,7 @@ class LessonCreateTest extends BaseTest {
 
     @Test
     @MockMember
+    @Transactional
     @DisplayName(value = "로그인 성공")
     void create() throws Exception{
         given(lessonService.create(any(Member.class),any(RequestLessonDto.class)))

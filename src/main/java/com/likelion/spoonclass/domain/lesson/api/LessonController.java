@@ -2,17 +2,17 @@ package com.likelion.spoonclass.domain.lesson.api;
 
 import com.likelion.spoonclass.common.dto.BaseDto;
 import com.likelion.spoonclass.config.auth.security.MemberAdapter;
+import com.likelion.spoonclass.domain.lesson.dto.LessonDetailDto;
 import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonIdDto;
 import com.likelion.spoonclass.domain.lesson.service.LessonService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -53,8 +53,12 @@ public class LessonController implements LessonAPI {
     }
 
     @Override
+    @GetMapping()
     public ResponseEntity getList(Pageable pageable) {
-        List<ResponseLessonDto> list = lessonService.getList(pageable);
-        return ResponseEntity.ok(list);
+        List<LessonDetailDto> list = lessonService.getList(pageable);
+        ResponseLessonDto responseDto = ResponseLessonDto.builder()
+                .list(list)
+                .build();
+        return ResponseEntity.ok(responseDto);
     }
 }
