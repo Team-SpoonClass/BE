@@ -1,7 +1,7 @@
 package com.likelion.spoonclass.domain.attend.api;
 
-import com.likelion.spoonclass.common.dto.BaseDto;
 import com.likelion.spoonclass.config.auth.security.MemberAdapter;
+import com.likelion.spoonclass.domain.attend.Attend;
 import com.likelion.spoonclass.domain.attend.ResponseAttendDto;
 import com.likelion.spoonclass.domain.attend.service.AttendService;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +18,11 @@ public class AttendController implements AttendAPI{
     @Override
     public ResponseEntity recruit(@AuthenticationPrincipal MemberAdapter memberAdapter,
                                   @RequestParam(value = "id") Long lessonId) {
-        Long id = attendService.recruit(memberAdapter.getMember(), lessonId);
+        Attend attend = attendService.recruit(memberAdapter.getMember(), lessonId);
 
-        return ResponseEntity.ok(ResponseAttendDto.builder().id(id));
+        return ResponseEntity.ok(ResponseAttendDto.builder()
+                .id(attend.getId())
+                .openKakao(attend.getOpenKakao())
+                .build());
     }
 }

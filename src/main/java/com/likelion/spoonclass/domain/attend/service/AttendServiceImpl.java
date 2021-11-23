@@ -15,7 +15,7 @@ public class AttendServiceImpl implements AttendService{
     private final AttendRepository attendRepository;
 
     @Override
-    public Long recruit(Member member, Long lessonId) {
+    public Attend recruit(Member member, Long lessonId) {
         Lesson lesson = lessonRepository.findById(lessonId)
                 .orElseThrow(() -> new IllegalArgumentException("없는 클래스입니다."));
         lesson.validate(member);
@@ -23,7 +23,7 @@ public class AttendServiceImpl implements AttendService{
         Attend attend = Attend.of(member, lesson);
         attendRepository.save(attend);
 
-        return attend.getId();
+        return attend;
     }
 
 }

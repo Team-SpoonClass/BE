@@ -16,6 +16,10 @@ public class Attend extends BaseEntity implements ValidateAuthority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    @Getter
+    private String openKakao;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Lesson lesson;
 
@@ -29,6 +33,7 @@ public class Attend extends BaseEntity implements ValidateAuthority {
     public Attend(Member member, Lesson lesson){
         this.member = member;
         this.lesson = lesson;
+        this.openKakao = lesson.getOpenKakao();
     }
 
     @Override

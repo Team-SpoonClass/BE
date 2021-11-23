@@ -9,10 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResponseAttendDto extends BaseDto {
     private Long id;
+    private String openKakao;
 
     @Builder
-    public ResponseAttendDto(Long id){
+    public ResponseAttendDto(Long id, String openKakao){
         super();
         this.id = id;
+        this.openKakao = openKakao;
     }
 }
