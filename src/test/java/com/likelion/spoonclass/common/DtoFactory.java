@@ -1,9 +1,13 @@
 package com.likelion.spoonclass.common;
 
+import com.likelion.spoonclass.domain.lesson.dto.LessonDetailDto;
 import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
+import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
 import com.likelion.spoonclass.domain.member.auth.token.TokenSet;
 import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignInDto;
 import com.likelion.spoonclass.domain.member.dto.request.RequestAuthSignUpDto;
+
+import java.util.List;
 
 public class DtoFactory {
     public static RequestAuthSignUpDto getMockSignUpDto(){
@@ -33,6 +37,22 @@ public class DtoFactory {
                 .description("mock description")
                 .oneLineInfo("mock info")
                 .openKakao("mock kakao")
+                .build();
+    }
+
+    public static LessonDetailDto getMockLessonDetailDto() {
+        return LessonDetailDto.builder()
+                .id(1L)
+                .name("mock lesson")
+                .club("mock club")
+                .oneLineInfo("mock info")
+                .representPath("mock path")
+                .build();
+    }
+
+    public static ResponseLessonDto getMockResponseLessonDto(List list) {
+        return ResponseLessonDto.builder()
+                .list(list)
                 .build();
     }
 }

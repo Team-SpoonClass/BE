@@ -3,6 +3,7 @@ package com.likelion.spoonclass.domain.lesson;
 import com.likelion.spoonclass.domain.BaseEntity;
 import com.likelion.spoonclass.domain.ValidateAuthority;
 import com.likelion.spoonclass.domain.attend.Attend;
+import com.likelion.spoonclass.domain.lesson.dto.LessonDetailDto;
 import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
 import com.likelion.spoonclass.domain.member.Member;
@@ -44,8 +45,9 @@ public class Lesson extends BaseEntity implements ValidateAuthority {
     @OneToMany(mappedBy = "lesson",cascade = CascadeType.ALL)
     private List<LessonPhoto> photoList = new ArrayList<>();
 
-    public ResponseLessonDto toResponseDto(){
-        return ResponseLessonDto.builder()
+    public LessonDetailDto toResponseDto(){
+        return LessonDetailDto.builder()
+                .id(id)
                 .name(name)
                 .club(club)
                 .oneLineInfo(oneLineInfo)
