@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.payload.JsonFieldType;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.likelion.spoonclass.config.ApiDocumentUtils.getDocumentRequest;
 import static com.likelion.spoonclass.config.ApiDocumentUtils.getDocumentResponse;
@@ -30,6 +31,7 @@ class LessonModifyTest extends BaseTest {
 
     @Test
     @MockMember
+    @Transactional
     @DisplayName(value = "클래스 수정 성공")
     void modify() throws Exception {
         given(lessonService.modify(any(Member.class),any(Long.class),any(RequestLessonDto.class)))
