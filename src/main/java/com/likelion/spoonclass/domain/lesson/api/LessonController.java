@@ -4,11 +4,16 @@ import com.likelion.spoonclass.common.dto.BaseDto;
 import com.likelion.spoonclass.config.auth.security.MemberAdapter;
 import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
+import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonIdDto;
 import com.likelion.spoonclass.domain.lesson.service.LessonService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.awt.print.Pageable;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +25,7 @@ public class LessonController implements LessonAPI {
     @PostMapping("/create")
     public ResponseEntity create(@AuthenticationPrincipal MemberAdapter memberAdapter,
                                  @RequestBody RequestLessonDto requestDto) {
-        ResponseLessonDto responseDto = ResponseLessonDto.builder()
+        ResponseLessonIdDto responseDto = ResponseLessonIdDto.builder()
                 .id(lessonService.create(memberAdapter.getMember(), requestDto))
                 .build();
 
@@ -32,7 +37,7 @@ public class LessonController implements LessonAPI {
     public ResponseEntity modify(@AuthenticationPrincipal MemberAdapter memberAdapter,
                                  @RequestParam(value = "id") Long id,
                                  @RequestBody RequestLessonDto requestDto) {
-        ResponseLessonDto responseDto = ResponseLessonDto.builder()
+        ResponseLessonIdDto responseDto = ResponseLessonIdDto.builder()
                 .id(lessonService.modify(memberAdapter.getMember(), id, requestDto))
                 .build();
 
@@ -45,5 +50,11 @@ public class LessonController implements LessonAPI {
                                  @RequestParam(value = "id") Long id) {
         lessonService.remove(memberAdapter.getMember(),id);
         return ResponseEntity.ok(new BaseDto());
+    }
+
+    @Override
+    public ResponseEntity getList(Pageable pageable) {
+        List<ResponseLessonDto> list = lessonService.getList(pageable);
+        return ResponseEntity.ok(list);
     }
 }

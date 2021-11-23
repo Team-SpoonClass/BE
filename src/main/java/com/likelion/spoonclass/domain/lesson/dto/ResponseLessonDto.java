@@ -1,7 +1,6 @@
 package com.likelion.spoonclass.domain.lesson.dto;
 
 import com.likelion.spoonclass.common.dto.BaseDto;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,11 +8,17 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class ResponseLessonDto extends BaseDto {
-    private Long id;
+    private String name;
+    private String club;
+    private String oneLineInfo;
+    private String representPath;
 
     @Builder
-    public ResponseLessonDto(Long id){
+    public ResponseLessonDto(String name, String club, String oneLineInfo, String representPath){
         super();
-        this.id = id;
+        this.name = name;
+        this.club = club;
+        this.oneLineInfo = oneLineInfo;
+        this.representPath = representPath;
     }
 }
