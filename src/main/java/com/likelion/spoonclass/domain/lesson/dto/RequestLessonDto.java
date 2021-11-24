@@ -4,10 +4,12 @@ import com.likelion.spoonclass.domain.lesson.Lesson;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class RequestLessonDto {
     private String name;
     private String oneLineInfo;

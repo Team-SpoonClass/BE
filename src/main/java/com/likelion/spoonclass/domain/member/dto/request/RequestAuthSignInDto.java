@@ -1,10 +1,11 @@
 package com.likelion.spoonclass.domain.member.dto.request;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class RequestAuthSignInDto {
     private String email;
     private String password;

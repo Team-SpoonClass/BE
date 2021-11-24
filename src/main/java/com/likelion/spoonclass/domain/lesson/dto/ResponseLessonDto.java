@@ -1,7 +1,6 @@
 package com.likelion.spoonclass.domain.lesson.dto;
 
 import com.likelion.spoonclass.common.dto.BaseDto;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
