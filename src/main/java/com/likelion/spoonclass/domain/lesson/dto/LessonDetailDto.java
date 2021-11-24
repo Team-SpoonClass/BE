@@ -1,9 +1,12 @@
 package com.likelion.spoonclass.domain.lesson.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 public class LessonDetailDto {
     private Long id;
     private String name;
