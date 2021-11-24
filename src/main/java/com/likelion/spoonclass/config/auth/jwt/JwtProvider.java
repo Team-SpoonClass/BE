@@ -86,7 +86,9 @@ public class JwtProvider {
     public Authentication getAuthentication(String jwtToken){
         MemberAdapter memberAdapter = (MemberAdapter)securityService
                 .loadUserByUsername(getEmailFromJwt(jwtToken));
-        return new UsernamePasswordAuthenticationToken(memberAdapter.getMember(),
+
+
+        return new UsernamePasswordAuthenticationToken(memberAdapter,
                 null,
                 memberAdapter.getAuthorities());
     }
