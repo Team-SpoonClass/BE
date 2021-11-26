@@ -51,6 +51,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors()
                 .and()
 
+                .headers()
+                .frameOptions()
+                .disable()
+                .and()
+
                 .exceptionHandling()
                     .authenticationEntryPoint(jwtEntryPoint)
                 .and()
@@ -64,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     // authenticated
                     .antMatchers(AUTHENTICATED_URI_LIST).authenticated()
                     // permitAll
-                    .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                    .antMatchers(HttpMethod.OPTIONS).permitAll()
                     .anyRequest().permitAll()
                 .and()
 
