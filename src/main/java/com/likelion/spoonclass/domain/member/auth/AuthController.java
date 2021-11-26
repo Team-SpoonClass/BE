@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/auth")
-@CrossOrigin(origins = "*",
-        allowedHeaders = "*",
-        methods = {RequestMethod.POST,RequestMethod.OPTIONS},
-        maxAge = 3600)
 public class AuthController implements AuthAPI {
     private final AuthService authService;
 
