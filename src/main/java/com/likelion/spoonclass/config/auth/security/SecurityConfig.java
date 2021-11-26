@@ -6,6 +6,7 @@ import com.likelion.spoonclass.config.auth.jwt.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -27,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final JwtProvider jwtProvider;
     private final AuthenticationEntryPoint jwtEntryPoint;
     private final String[] AUTHENTICATED_URI_LIST = {
-            "/member/**","/lesson/**"
+            "/lesson/**"
     };
 
     @Bean
@@ -63,6 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     // authenticated
                     .antMatchers(AUTHENTICATED_URI_LIST).authenticated()
                     // permitAll
+                    .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                     .anyRequest().permitAll()
                 .and()
 
