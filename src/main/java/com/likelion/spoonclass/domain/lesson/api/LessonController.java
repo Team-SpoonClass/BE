@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/lesson")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LessonController implements LessonAPI {
     private final LessonService lessonService;
 
