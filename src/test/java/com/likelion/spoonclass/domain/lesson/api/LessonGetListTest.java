@@ -33,7 +33,6 @@ class LessonGetListTest extends BaseTest {
     private LessonService lessonService;
 
     @Test
-    @MockMember
     @Transactional(readOnly = true)
     void getList() throws Exception{
         List<LessonDetailDto> list = new ArrayList<>();
@@ -57,7 +56,8 @@ class LessonGetListTest extends BaseTest {
                                 fieldWithPath("lessonDetailDto.[].name").type(JsonFieldType.STRING).description("클래스 이름"),
                                 fieldWithPath("lessonDetailDto.[].club").type(JsonFieldType.STRING).description("동아리"),
                                 fieldWithPath("lessonDetailDto.[].oneLineInfo").type(JsonFieldType.STRING).description("한 줄 소개"),
-                                fieldWithPath("lessonDetailDto.[].representPath").type(JsonFieldType.STRING).description("대표 이미지 링크")
+                                fieldWithPath("lessonDetailDto.[].representPath").type(JsonFieldType.STRING).description("대표 이미지 링크"),
+                                fieldWithPath("lessonDetailDto.[].status").type(JsonFieldType.STRING).description("클래스 오픈 여부")
                         )));
     }
 }

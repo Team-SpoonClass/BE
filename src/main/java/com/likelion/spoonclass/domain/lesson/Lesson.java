@@ -4,6 +4,7 @@ import com.likelion.spoonclass.domain.BaseEntity;
 import com.likelion.spoonclass.domain.ValidateAuthority;
 import com.likelion.spoonclass.domain.attend.Attend;
 import com.likelion.spoonclass.domain.lesson.dto.LessonDetailDto;
+import com.likelion.spoonclass.domain.lesson.dto.LessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
 import com.likelion.spoonclass.domain.member.Member;
@@ -22,6 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Lesson extends BaseEntity implements ValidateAuthority {
     @Id
+    @Setter
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -34,6 +36,11 @@ public class Lesson extends BaseEntity implements ValidateAuthority {
     private String description;
 
     private String club;
+
+    private String representPath;
+
+    @Enumerated(EnumType.STRING)
+    private LessonStatus status;
 
     @Setter
     @OneToOne(fetch = FetchType.LAZY)
@@ -51,7 +58,8 @@ public class Lesson extends BaseEntity implements ValidateAuthority {
                 .name(name)
                 .club(club)
                 .oneLineInfo(oneLineInfo)
-                .representPath("path")
+                .representPath(representPath)
+                .status(status)
                 .build();
     }
 
@@ -62,17 +70,40 @@ public class Lesson extends BaseEntity implements ValidateAuthority {
         this.oneLineInfo = oneLineInfo;
         this.description = description;
         this.club = club;
+        status = LessonStatus.OPEN;
+        representPath = "path";
     }
 
     public void modify(RequestLessonDto requestDto){
-        this.name = requestDto.getName();
-        this.description = requestDto.getDescription();
-        this.openKakao = requestDto.getOpenKakao();
-        this.oneLineInfo = requestDto.getOneLineInfo();
+        if(requestDto.getName() != null)
+            this.name = requestDto.getName();
+        if(requestDto.getDescription() != null)
+            this.description = requestDto.getDescription();
+        if(requestDto.getOpenKakao() != null)
+            this.openKakao = requestDto.getOpenKakao();
+        if(requestDto.getOneLineInfo() != null)
+            this.oneLineInfo = requestDto.getOneLineInfo();
     }
 
     @Override
     public Member getMember() {
         return captain;
+    }
+
+    public void close() {
+        this.status = LessonStatus.CLOSE;
+    }
+
+    public LessonDto getDto() {
+        return LessonDto.builder()
+                .description(description)
+                .club(club)
+                .id(id)
+                .name(name)
+                .oneLineInfo(oneLineInfo)
+                .openKakao(openKakao)
+                .representPath(representPath)
+                .status(status)
+                .build();
     }
 }

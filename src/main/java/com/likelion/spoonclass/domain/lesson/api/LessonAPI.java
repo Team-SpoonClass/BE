@@ -13,4 +13,8 @@ public interface LessonAPI {
     ResponseEntity remove(MemberAdapter memberAdapter, Long id);
 
     ResponseEntity getList(Pageable pageable);
+
+    ResponseEntity close(MemberAdapter memberAdapter, Long id);
+
+    ResponseEntity get(Long id);
 }
