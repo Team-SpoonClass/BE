@@ -23,6 +23,7 @@ public class EntityFactory {
 
     public static Lesson getMockLesson(RequestLessonDto requestDto) {
         Lesson lesson = requestDto.of();
+        lesson.setId(1L);
         lesson.setCaptain(getMockMember(DtoFactory.getMockSignUpDto()));
 
         return lesson;

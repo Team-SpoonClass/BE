@@ -1,6 +1,9 @@
 package com.likelion.spoonclass.common;
 
+import com.likelion.spoonclass.domain.lesson.Lesson;
+import com.likelion.spoonclass.domain.lesson.LessonStatus;
 import com.likelion.spoonclass.domain.lesson.dto.LessonDetailDto;
+import com.likelion.spoonclass.domain.lesson.dto.LessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.RequestLessonDto;
 import com.likelion.spoonclass.domain.lesson.dto.ResponseLessonDto;
 import com.likelion.spoonclass.domain.member.auth.token.TokenSet;
@@ -47,6 +50,7 @@ public class DtoFactory {
                 .club("mock club")
                 .oneLineInfo("mock info")
                 .representPath("mock path")
+                .status(LessonStatus.OPEN)
                 .build();
     }
 
@@ -54,5 +58,9 @@ public class DtoFactory {
         return ResponseLessonDto.builder()
                 .list(list)
                 .build();
+    }
+
+    public static LessonDto getMockLessonDto(Lesson lesson) {
+        return lesson.getDto();
     }
 }

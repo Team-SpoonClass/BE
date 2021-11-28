@@ -62,4 +62,18 @@ public class LessonController implements LessonAPI {
                 .build();
         return ResponseEntity.ok(responseDto);
     }
+
+    @Override
+    @PostMapping("/close")
+    public ResponseEntity close(@AuthenticationPrincipal MemberAdapter memberAdapter,
+                                @RequestParam("id") Long id) {
+        lessonService.close(memberAdapter.getMember(), id);
+        return ResponseEntity.ok(new BaseDto());
+    }
+
+    @Override
+    @GetMapping("/one")
+    public ResponseEntity get(@RequestParam("id") Long id) {
+        return ResponseEntity.ok(lessonService.get(id));
+    }
 }
