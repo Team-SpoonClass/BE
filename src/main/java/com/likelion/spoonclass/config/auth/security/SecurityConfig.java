@@ -48,12 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().disable()
                 .csrf().disable()
                 .formLogin().disable()
-                .cors()
-                .and()
-
-                .headers()
-                .frameOptions()
-                .disable()
                 .and()
 
                 .exceptionHandling()
