@@ -8,7 +8,7 @@ spring:
       maximum-pool-size:4
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       genetrate-ddl: true
       show-sql: true
 
