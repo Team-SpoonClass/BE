@@ -10,18 +10,21 @@ import lombok.NoArgsConstructor;
 public class ResponseAuthSignInDto extends BaseDto {
     private String oriToken;
     private String refreshToken;
+    private String username;
 
     @Builder
-    public ResponseAuthSignInDto(String oriToken,String refreshToken){
+    public ResponseAuthSignInDto(String oriToken, String refreshToken, String username ){
         super();
         this.oriToken = oriToken;
         this.refreshToken = refreshToken;
+        this.username = username;
     }
 
-    public static ResponseAuthSignInDto of(String oriToken, String refreshToken){
+    public static ResponseAuthSignInDto of(String oriToken, String refreshToken, String username){
         return ResponseAuthSignInDto.builder()
                 .oriToken(oriToken)
                 .refreshToken(refreshToken)
+                .username(username)
                 .build();
     }
 }

@@ -8,11 +8,13 @@ import lombok.Data;
 public class TokenSet {
     String oriToken;
     String refreshToken;
+    String username;
 
-    public static TokenSet of(String ori, String ref){
+    public static TokenSet of(String ori, String ref, String username){
         return TokenSet.builder()
                 .oriToken(ori)
                 .refreshToken(ref)
+                .username(username)
                 .build();
     }
 }
