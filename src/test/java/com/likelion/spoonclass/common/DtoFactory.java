@@ -30,7 +30,7 @@ public class DtoFactory {
     }
 
     public static TokenSet getMockToken(){
-        return TokenSet.of("originalTOken!@#!#!3f3f","refreshToken!@!@Q!@r112");
+        return TokenSet.of("originalTOken!@#!#!3f3f","refreshToken!@!@Q!@r112", "username");
     }
 
     public static RequestLessonDto getMockLessonDto(){
