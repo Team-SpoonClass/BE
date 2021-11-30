@@ -17,10 +17,13 @@ public class LessonDto extends BaseDto {
     private String club;
     private String representPath;
     private LessonStatus status;
+    private Long userId;
+    private String username;
 
     @Builder
     LessonDto(Long id, String name, String oneLineInfo, String openKakao,
-              String description, String club, String representPath, LessonStatus status) {
+              String description, String club, String representPath, LessonStatus status,
+              Long userId, String username) {
         super();
         this.id = id;
         this.name = name;
@@ -30,6 +33,8 @@ public class LessonDto extends BaseDto {
         this.club = club;
         this.representPath = representPath;
         this.status = status;
+        this.userId = userId;
+        this.username = username;
     }
 
 }

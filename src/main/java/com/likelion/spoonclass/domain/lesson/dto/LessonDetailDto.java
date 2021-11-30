@@ -14,9 +14,13 @@ public class LessonDetailDto {
     private String oneLineInfo;
     private String representPath;
     private LessonStatus status;
+    private Long userId;
+    private String username;
 
     @Builder
-    public LessonDetailDto(Long id, String name, String club, String oneLineInfo, String representPath, LessonStatus status){
+    public LessonDetailDto(Long id, String name, String club,
+                           String oneLineInfo, String representPath, LessonStatus status,
+                           Long userId, String username){
         super();
         this.id = id;
         this.name = name;
@@ -24,5 +28,7 @@ public class LessonDetailDto {
         this.oneLineInfo = oneLineInfo;
         this.representPath = representPath;
         this.status = status;
+        this.userId = userId;
+        this.username = username;
     }
 }

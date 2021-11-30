@@ -60,6 +60,8 @@ public class Lesson extends BaseEntity implements ValidateAuthority {
                 .oneLineInfo(oneLineInfo)
                 .representPath(representPath)
                 .status(status)
+                .userId(captain.getId())
+                .username(captain.getName())
                 .build();
     }
 
@@ -104,6 +106,8 @@ public class Lesson extends BaseEntity implements ValidateAuthority {
                 .openKakao(openKakao)
                 .representPath(representPath)
                 .status(status)
+                .userId(captain.getId())
+                .username(captain.getName())
                 .build();
     }
 }
