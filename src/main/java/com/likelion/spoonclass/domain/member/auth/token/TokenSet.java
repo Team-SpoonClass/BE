@@ -9,12 +9,14 @@ public class TokenSet {
     String oriToken;
     String refreshToken;
     String username;
+    Long id;
 
-    public static TokenSet of(String ori, String ref, String username){
+    public static TokenSet of(String ori, String ref, String username, Long id){
         return TokenSet.builder()
                 .oriToken(ori)
                 .refreshToken(ref)
                 .username(username)
+                .id(id)
                 .build();
     }
 }

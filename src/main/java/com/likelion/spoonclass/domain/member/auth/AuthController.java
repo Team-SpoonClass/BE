@@ -20,7 +20,7 @@ public class AuthController implements AuthAPI {
     public ResponseEntity<?> signIn(@RequestBody RequestAuthSignInDto requestDto) {
         TokenSet tokenSet = authService.login(requestDto);
         return ResponseEntity.ok().body(ResponseAuthSignInDto.of(tokenSet.getOriToken(),
-                tokenSet.getRefreshToken(), tokenSet.getUsername()));
+                tokenSet.getRefreshToken(), tokenSet.getUsername(), tokenSet.getId()));
     }
 
     @PostMapping("/signUp")

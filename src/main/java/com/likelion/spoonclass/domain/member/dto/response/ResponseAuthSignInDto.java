@@ -11,20 +11,22 @@ public class ResponseAuthSignInDto extends BaseDto {
     private String oriToken;
     private String refreshToken;
     private String username;
-
+    private Long id;
     @Builder
-    public ResponseAuthSignInDto(String oriToken, String refreshToken, String username ){
+    public ResponseAuthSignInDto(String oriToken, String refreshToken, String username, Long id){
         super();
         this.oriToken = oriToken;
         this.refreshToken = refreshToken;
         this.username = username;
+        this.id = id;
     }
 
-    public static ResponseAuthSignInDto of(String oriToken, String refreshToken, String username){
+    public static ResponseAuthSignInDto of(String oriToken, String refreshToken, String username, Long id){
         return ResponseAuthSignInDto.builder()
                 .oriToken(oriToken)
                 .refreshToken(refreshToken)
                 .username(username)
+                .id(id)
                 .build();
     }
 }

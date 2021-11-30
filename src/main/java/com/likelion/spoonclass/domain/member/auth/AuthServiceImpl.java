@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AuthService{
         if(!passwordEncoder.matches(requestDto.getPassword(), member.getPassword()))
             throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
 
-        return TokenSet.of(jwtProvider.create(member.getEmail(), member.getAuthority()),null, member.getName());
+        return TokenSet.of(jwtProvider.create(member.getEmail(), member.getAuthority()),null, member.getName(), member.getId());
     }
 
     @Override
